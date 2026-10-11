@@ -21,7 +21,7 @@ class Komiic extends ComicSource {
     minAppVersion = "1.0.0"
 
     // 更新链接
-    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/komiic.js"
+    url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/komiic.js"
 
     // 两个可用域名：第一个为国内直连默认，第二个为原版域名
     static domains = ["https://komiic.cc", "https://komiic.com"]

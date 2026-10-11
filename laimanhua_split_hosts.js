@@ -285,7 +285,7 @@ class LaiManHua extends ComicSource {
     version = "1.2.1";
 
     minAppVersion = "1.0.0";
-    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/laimanhua_split_hosts.js";
+    url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/laimanhua_split_hosts.js";
 
     // 固定分流：搜索/详情/阅读使用 www；首页/分类使用移动域名。
     SEARCH_HOST = "https://www.laimanhua88.com";

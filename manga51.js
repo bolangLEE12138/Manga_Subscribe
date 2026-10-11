@@ -192,7 +192,7 @@ class Manga51 extends ComicSource {
   key = "manga51";
   version = "1.2.0";
   minAppVersion = "1.6.0";
-  url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/manga51.js";
+  url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/manga51.js";
 
   // 移动站结构最简（.panel / .comic-item / .chapter-list），列表、详情、章节都走它
   static host = "https://m.51manga.com";

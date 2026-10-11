@@ -13,7 +13,7 @@ class MangaDex extends ComicSource {
     minAppVersion = "1.6.0"
 
     // update url
-    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/manga_dex.js"
+    url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/manga_dex.js"
 
     comicsPerPage = 20
 

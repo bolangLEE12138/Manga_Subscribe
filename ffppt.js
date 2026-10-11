@@ -45,7 +45,7 @@ class Ffppt extends ComicSource {
     key = "ffppt";
     version = "1.0.1";
     minAppVersion = "1.0.0";
-    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/ffppt.js";
+    url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/ffppt.js";
 
     HOST = "https://ffppt.com";
     UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36";

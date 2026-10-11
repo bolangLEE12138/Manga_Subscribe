@@ -3,7 +3,7 @@ class Noymanga extends ComicSource {
   key = "noymanga";
   version = "1.1.3";
   minAppVersion = "1.6.0";
-  url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/noymanga.js";
+  url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/noymanga.js";
 
   baseUrl = "https://noymanga.com";
   apiBaseUrl = "https://noymanga.com";

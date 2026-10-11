@@ -13,7 +13,7 @@ class WManHua extends ComicSource {
   minAppVersion = "1.4.0";
 
   // 无托管更新地址，显式留空（不要把漫画网站页面误当更新地址）
-  url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/wmanhua.js";
+  url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/wmanhua.js";
 
   base = "https://www.wmanhua.com";
 

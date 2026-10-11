@@ -20,7 +20,7 @@ class Gfmh extends ComicSource {
   key = "GfmhApp";
   version = "1.3.0";
   minAppVersion = "1.6.0";
-  url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/gfmh.js";
+  url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/gfmh.js";
 
   baseUrl = "https://gfmh.app";
   requestHeaders = {

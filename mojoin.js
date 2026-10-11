@@ -11,7 +11,7 @@ class MojoinV2 extends ComicSource {
   key = "mojoin_v2";
   version = "1.0.7";
   minAppVersion = "1.0.0";
-  url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/mojoin.js";
+  url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/mojoin.js";
 
   baseUrl = "https://mojoin.com";
   apiBase = "https://mojoin-api.com/comics";

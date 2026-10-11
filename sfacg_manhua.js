@@ -13,7 +13,7 @@ class SfacgManhua extends ComicSource {
     key = "sfacg_manhua"
     version = "1.0.0"
     minAppVersion = "1.6.0"
-    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/sfacg_manhua.js"
+    url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/sfacg_manhua.js"
 
     static baseUrl = "https://manhua.sfacg.com"
     static searchBase = "https://s.sfacg.com"

@@ -4,7 +4,7 @@ class YKMHSource extends ComicSource {
     key = "ykmh"
     version = "1.0.6"
     minAppVersion = "1.4.0"
-    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/ykmh.js"
+    url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/ykmh.js"
 
     /**
      * 修复日志分析结论 (you05.txt)：

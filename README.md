@@ -33,20 +33,20 @@
 
 ## 二、部署与订阅
 
-> **本仓库已配置完成**，部署地址为 `github.com/bolangLEE12138/manga-sub`。
+> **本仓库已配置完成**，部署地址为 `github.com/bolangLEE12138/Manga_Subscribe`。
 
 ### 1. 在 App 中订阅
 
 源清单地址填：
 
 ```
-https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/index.json
+https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/index.json
 ```
 
 若 `raw.githubusercontent.com` 在你的网络下不通，改用 jsDelivr 镜像：
 
 ```
-https://cdn.jsdelivr.net/gh/bolangLEE12138/manga-sub@main/index.json
+https://cdn.jsdelivr.net/gh/bolangLEE12138/Manga_Subscribe@main/index.json
 ```
 
 > jsDelivr 对 `@main` 有缓存（最长约 12 小时）。改了源需要立刻生效时用 raw 地址，
@@ -70,7 +70,7 @@ git add -A && git commit -m "chore: 更新源地址" && git push
 ### 3. 推送到 GitHub（首次）
 
 ```bash
-git remote add origin git@github.com:bolangLEE12138/manga-sub.git
+git remote add origin git@github.com:bolangLEE12138/Manga_Subscribe.git
 git push -u origin main
 ```
 

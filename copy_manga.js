@@ -3,7 +3,7 @@ class CopyManga extends ComicSource {
     key = "copy_manga"
     version = "1.6.6"
     minAppVersion = "1.6.0"
-    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/copy_manga.js"
+    url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/copy_manga.js"
 
     //====修改====【新增自动重置设备指纹函数】
     /**

@@ -16,7 +16,7 @@ class XiangJiaoManHua extends ComicSource {
     key = "manhuauo_banana_v2"
     version = "1.0.3"
     minAppVersion = "1.0.0"
-    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/manhuauo_banana.js"
+    url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/manhuauo_banana.js"
 
     baseUrl = "https://www.manhuauo.com"
 

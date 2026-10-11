@@ -3,7 +3,7 @@ class RuManHua extends ComicSource {
     key = "rumanhua_fixed_v15"
     version = "1.2.7"
     minAppVersion = "1.0.0"
-    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/rumanhua.js"
+    url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/rumanhua.js"
 
     settings = {
         image_quality: {

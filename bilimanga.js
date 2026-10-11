@@ -54,7 +54,7 @@ class BiliManga extends ComicSource {
   minAppVersion = "1.6.0";
 
   // 更新链接，请替换为你自己的托管地址
-  url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/bilimanga.js";
+  url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/bilimanga.js";
 
   get baseUrl() {
     return "https://www.bilimanga.net";

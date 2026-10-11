@@ -23,7 +23,7 @@ class TencentComicOfficial extends ComicSource {
     key = "qq_comic_official_v1"
     version = "1.0.3"
     minAppVersion = "1.0.0"
-    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/tencent_comic_official.js"
+    url = "https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/tencent_comic_official.js"
 
     baseUrl = "https://m.ac.qq.com"
     headers = {
