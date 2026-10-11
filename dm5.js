@@ -25,7 +25,7 @@ class DM5 extends ComicSource {
 
     minAppVersion = "1.6.0";
 
-    url = "";
+    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/dm5.js";
 
     settings = {
         domain: {

@@ -27,7 +27,7 @@ class ManWang extends ComicSource {
     minAppVersion = "1.4.0";
 
     // 无维护中的更新地址，按规范显式留空
-    url = "";
+    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/manwang.js";
 
     baseUrl = "https://www.manwang.net";
 

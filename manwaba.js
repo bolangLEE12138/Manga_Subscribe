@@ -4,7 +4,7 @@ class ManWaBa extends ComicSource {
   key = "manwaba";
   version = "1.1.3";
   minAppVersion = "1.6.0"; // 提升最低版本要求以支持 AES 解密接口
-  url = "https://cdn.jsdelivr.net/gh/venera-app/venera-configs@main/manwaba.js";
+  url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/manwaba.js";
   api = "https://manwali.cc/api";
 
   // 统一的浏览器请求头

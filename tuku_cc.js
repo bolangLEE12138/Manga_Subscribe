@@ -28,7 +28,7 @@ class TukuCC extends ComicSource {
     minAppVersion = "1.4.0";
 
     // 无维护中的更新地址，按规范显式留空，不把站点首页误当更新地址
-    url = "";
+    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/tuku_cc.js";
 
     baseUrl = "https://www.tuku.cc";
 

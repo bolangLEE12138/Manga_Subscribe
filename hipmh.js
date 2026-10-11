@@ -16,7 +16,7 @@ class Hipmh extends ComicSource {
     key = "hipmh"
     version = "1.0.1"
     minAppVersion = "1.6.0"
-    url = ""
+    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/hipmh.js"
 
     static mainHost = "https://m.hipmh.com"
     static apiHost = "https://hipapi1.s3file.top"

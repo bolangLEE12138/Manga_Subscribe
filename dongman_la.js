@@ -14,7 +14,7 @@ class DongManLa extends ComicSource {
     key = "dongman_la";
     version = "1.0.1";
     minAppVersion = "1.0.0";
-    url = "";
+    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/dongman_la.js";
 
     baseUrl = "https://www.dongman.la";
     imageBaseUrl = "https://img.dongman.la";

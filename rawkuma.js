@@ -20,7 +20,7 @@ class Rawkuma extends ComicSource {
     key = "rawkuma"
     version = "1.1.0"
     minAppVersion = "1.0.0"
-    url = ""
+    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/rawkuma.js"
 
     static defaultBaseUrl = "rawkuma.net"
     static ajaxAction = "/wp-admin/admin-ajax.php"

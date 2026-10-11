@@ -4,7 +4,7 @@ class GuaziManhua extends ComicSource {
     key = "guazimanhua"
     version = "1.0.4"
     minAppVersion = "1.0.0"
-    url = ""
+    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/guazi_manhua.js"
 
     get baseUrl() {
         return "https://www.guazimanhua.com"

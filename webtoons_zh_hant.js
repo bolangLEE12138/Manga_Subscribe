@@ -50,7 +50,7 @@ class WebtoonsZhHant extends ComicSource {
     key = "webtoons_zh_hant"
     version = "1.0.0"
     minAppVersion = "1.6.0"
-    url = ""
+    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/webtoons_zh_hant.js"
 
     // ---------------- 站点常量 ----------------
     static SITE = "https://www.webtoons.com"

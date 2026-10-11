@@ -758,7 +758,7 @@ class Ikm extends ComicSource {
   key = "ikmmh_v2";
   version = "3.0.0";
   minAppVersion = "1.0.0";
-  url = "";
+  url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/ikmmh_v2.js";
   // 常量定义
   static baseUrl = "https://www.ikmmh.com";
   static Mobile_UA = "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1";

@@ -14,7 +14,7 @@ class Mh4399 extends ComicSource {
     key = "mh4399"
     version = "1.0.3"
     minAppVersion = "1.6.0"
-    url = ""
+    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/mh4399.js"
 
     static baseUrl = "http://www.4399manhua.com"
     static userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"

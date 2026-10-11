@@ -10,7 +10,7 @@ class Dongmanmanhua extends ComicSource {
     key = "dongmanmanhua"
     version = "1.0.6"
     minAppVersion = "1.6.0"
-    url = ""
+    url = "https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/dongmanmanhua.js"
 
     static baseUrl = "https://www.dongmanmanhua.cn"
     static userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
