@@ -1,10 +1,40 @@
 [
     {
+        "name": "百合会",
+        "fileName": "baihehui.js",
+        "key": "baihehui",
+        "version": "1.0.0"
+    },
+    {
+        "name": "包子漫画",
+        "fileName": "baozi.js",
+        "key": "baozi",
+        "version": "1.1.6"
+    },
+    {
         "name": "嗶哩漫畫",
         "fileName": "bilimanga.js",
         "key": "bilimanga",
         "version": "1.1.3",
         "description": "嗶哩漫畫。需要登录方可阅读。"
+    },
+    {
+        "name": "CCC追漫台",
+        "fileName": "ccc.js",
+        "key": "ccc",
+        "version": "1.0.1"
+    },
+    {
+        "name": "カドコミ",
+        "fileName": "comic_walker.js",
+        "key": "comic_walker",
+        "version": "1.0.1"
+    },
+    {
+        "name": "comick",
+        "fileName": "comick.js",
+        "key": "comick",
+        "version": "1.2.0"
     },
     {
         "name": "拷贝漫画",
@@ -35,6 +65,12 @@
         "description": "咚漫（LINE WEBTOON 中国区）。"
     },
     {
+        "name": "ehentai",
+        "fileName": "ehentai.js",
+        "key": "ehentai",
+        "version": "1.2.0"
+    },
+    {
         "name": "飞翔漫画",
         "fileName": "ffppt.js",
         "key": "ffppt",
@@ -49,11 +85,23 @@
         "description": "古风漫画。"
     },
     {
+        "name": "GoDa漫画",
+        "fileName": "goda.js",
+        "key": "goda",
+        "version": "1.2.1"
+    },
+    {
         "name": "瓜子漫画",
         "fileName": "guazi_manhua.js",
         "key": "guazimanhua",
         "version": "1.0.4",
         "description": "瓜子漫画。"
+    },
+    {
+        "name": "H-Comic",
+        "fileName": "hcomic.js",
+        "key": "hcomic",
+        "version": "1.0.0"
     },
     {
         "name": "嬉皮漫畫",
@@ -63,11 +111,47 @@
         "description": "嬉皮漫畫。"
     },
     {
+        "name": "hitomi.la",
+        "fileName": "hitomi.js",
+        "key": "hitomi",
+        "version": "1.1.2"
+    },
+    {
+        "name": "热辣漫画",
+        "fileName": "hot_manga.js",
+        "key": "hot_manga",
+        "version": "1.0.0"
+    },
+    {
         "name": "爱看漫",
         "fileName": "ikmmh_v2.js",
         "key": "ikmmh_v2",
         "version": "3.0.0",
         "description": "爱看漫。中国大陆部分网络下首页可能返回 403，源内置多域名回退。"
+    },
+    {
+        "name": "jcomic.net",
+        "fileName": "jcomic.js",
+        "key": "jcomic",
+        "version": "1.0.0"
+    },
+    {
+        "name": "禁漫天堂",
+        "fileName": "jm.js",
+        "key": "jm",
+        "version": "1.4.0"
+    },
+    {
+        "name": "Kavita",
+        "fileName": "kavita.js",
+        "key": "kavita",
+        "version": "1.0.0"
+    },
+    {
+        "name": "Komga",
+        "fileName": "komga.js",
+        "key": "komga",
+        "version": "1.0.0"
     },
     {
         "name": "Komiic",
@@ -98,6 +182,18 @@
         "description": "MangaDex。官方源同步版本。"
     },
     {
+        "name": "漫画柜",
+        "fileName": "manhuagui.js",
+        "key": "ManHuaGui",
+        "version": "1.2.1"
+    },
+    {
+        "name": "漫画人",
+        "fileName": "manhuaren.js",
+        "key": "manhuaren",
+        "version": "1.0.0"
+    },
+    {
         "name": "香蕉漫画",
         "fileName": "manhuauo_banana.js",
         "key": "manhuauo_banana_v2",
@@ -119,6 +215,18 @@
         "description": "漫网。官方搜索接口不稳定时会自动降级为站内目录检索。"
     },
     {
+        "name": "漫画1234",
+        "fileName": "mh1234.js",
+        "key": "mh1234",
+        "version": "1.0.0"
+    },
+    {
+        "name": "18漫画",
+        "fileName": "mh18.js",
+        "key": "mh18",
+        "version": "1.0.0"
+    },
+    {
         "name": "4399漫画网",
         "fileName": "mh4399.js",
         "key": "mh4399",
@@ -133,11 +241,35 @@
         "description": "MOJOIN（台湾）。"
     },
     {
+        "name": "漫小肆",
+        "fileName": "mxs.js",
+        "key": "mxs",
+        "version": "1.0.0"
+    },
+    {
+        "name": "MYCOMIC",
+        "fileName": "mycomic.js",
+        "key": "mycomic",
+        "version": "1.1.0"
+    },
+    {
+        "name": "nhentai",
+        "fileName": "nhentai.js",
+        "key": "nhentai",
+        "version": "1.1.0"
+    },
+    {
         "name": "NoyManga",
         "fileName": "noymanga.js",
         "key": "noymanga",
         "version": "1.1.3",
         "description": "NoyManga。"
+    },
+    {
+        "name": "Picacg",
+        "fileName": "picacg.js",
+        "key": "picacg",
+        "version": "1.0.6"
     },
     {
         "name": "Rawkuma",
@@ -159,6 +291,12 @@
         "key": "sfacg_manhua",
         "version": "1.0.0",
         "description": "SF漫画。"
+    },
+    {
+        "name": "少年ジャンプ＋",
+        "fileName": "shonen_jump_plus.js",
+        "key": "shonen_jump_plus",
+        "version": "1.1.1"
     },
     {
         "name": "腾讯动漫（正版）",
@@ -201,6 +339,12 @@
         "key": "ykmh",
         "version": "1.0.6",
         "description": "优酷漫画（修复版）。站点有 Cloudflare 防护，中国大陆网络可能需要代理。"
+    },
+    {
+        "name": "再漫画",
+        "fileName": "zaimanhua.js",
+        "key": "zaimanhua",
+        "version": "1.0.2"
     },
     {
         "name": "zero搬运网",

@@ -1,0 +1,32 @@
+{
+    "_note": "本文件定义哪些源跟随官方 venera-configs 更新。upstream 列表中的源：文件从官方拉取，顶层 url 指向官方 raw 地址，由 tools/sync_official.py 同步。不在列表中的源为私有版本（自研修复或比官方更新），url 指向本仓库，绝不能被官方覆盖。",
+    "_why": "App 的 comicSourceListUrl 只能填一个地址。为了让一个订阅地址同时覆盖「私有源」和「官方源」，官方源收录进本仓库但保持指向官方文件；版本号由 sync_official.py 同步，这样 App 的『检查更新』仍能从官方拉到新版。",
+    "officialBase": "https://cdn.jsdelivr.net/gh/venera-app/venera-configs@main",
+    "upstream": [
+        "baihehui.js",
+        "baozi.js",
+        "ccc.js",
+        "comick.js",
+        "ehentai.js",
+        "goda.js",
+        "hcomic.js",
+        "hitomi.js",
+        "hot_manga.js",
+        "jcomic.js",
+        "jm.js",
+        "kavita.js",
+        "komga.js",
+        "manga_dex.js",
+        "manhuagui.js",
+        "manhuaren.js",
+        "mh1234.js",
+        "mh18.js",
+        "mxs.js",
+        "mycomic.js",
+        "nhentai.js",
+        "picacg.js",
+        "wnacg.js",
+        "zaimanhua.js"
+    ],
+    "_excluded_note": "comic_walker.js 与 shonen_jump_plus.js 已从 upstream 移除：它们在备份中的版本号与官方相同，但内容是修复版（comic_walker 用 latestVersion 1.6.4 + App Store 自动获取，官方 1.4.13 会被服务端以 upgrade_required 拒绝；shonen_jump_plus 用 4.5.24，官方 4.0.24）。版本号相同意味着 App 不会提示更新，跟官方同步会造成静默降级。"
+}

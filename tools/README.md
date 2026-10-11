@@ -2,19 +2,57 @@
 
 | 脚本 | 作用 | 命令 |
 |---|---|---|
+| `upstream.json` | **配置文件**：定义哪些源跟随官方更新。不在此列表 = 私有源 | — |
 | `validate.js` | Venera 兼容性校验（L1 语法 → L5 设置），用最小运行时仿真复现 App 的加载流程 | `node tools/validate.js` |
-| `gen_index.py` | 从源文件重新生成 `index.json`，`name`/`key`/`version` 一律读取源文件，避免手写不一致 | `python3 tools/gen_index.py` |
-| `set_url.py` | 把所有源的顶层 `url` 指向本仓库；`--show` 查看现状，`--restore` 回滚 | `python3 tools/set_url.py <仓库地址>` |
+| `gen_index.py` | 从源文件重新生成 `index.json`，`name`/`key`/`version` 一律读取源文件 | `python3 tools/gen_index.py` |
+| `set_url.py` | 按 upstream.json 分类设置每个源的 `url`：私有 → 本仓库，跟随官方 → 官方 | `python3 tools/set_url.py <仓库地址>` |
+| `sync_official.py` | 把「跟随官方」的源同步到官方最新版 | `python3 tools/sync_official.py` |
+
+## 为什么需要区分私有源和跟随官方的源
+
+App 的更新是**两条独立链路**（见 App 源码 `lib/pages/comic_source_page.dart` 与 `parser.dart`）：
+
+```
+1. 要不要更新？  checkComicSourceUpdate() 读 comicSourceListUrl（= 本仓库 index.json）
+                 比较 versions[key] 与本地 version，严格大于才提示
+2. 从哪里下载？  ComicSourcePage.update() 读【已安装源自身的 url 字段】
+                 ⚠ 而且是先 remove() 删源，再下载；下载/解析失败 = 源丢失
+```
+
+所以：
+
+| 类型 | index.json 版本号 | 源内 url | 效果 |
+|---|---|---|---|
+| 私有源 | 自己维护 | 本仓库 | 官方永远覆盖不到你的修复 |
+| 跟随官方源 | 由 `sync_official.py` 同步 | 官方 jsdelivr | 官方发新版 → 提示更新 → 下到官方新版 |
+
+**只维护其中一条链路不会生效**：版本号没同步就永不提示；url 不指官方就会下到别处。
 
 ## 推荐工作流
 
 ```bash
-# 修改某个源后：
-#   1) 先提升该源的 version（否则 App 不会提示更新，见 README 第六节）
+# 改动私有源后：
+#   1) 先提升该源的 version（否则 App 不会提示更新）
 python3 tools/gen_index.py      # 2) 重新生成清单
 node tools/validate.js          # 3) 必须全绿才能提交
 git add -A && git commit -m "fix: <源名> <改动说明>" && git push
+
+# 定期同步官方源：
+python3 tools/sync_official.py --check   # 先看有没有新版
+python3 tools/sync_official.py           # 同步
+python3 tools/gen_index.py && node tools/validate.js
+git add -A && git commit -m "chore: 同步官方源" && git push
 ```
+
+## 新增源时的归属判断
+
+- **与官方内容一致** → 加进 `tools/upstream.json` 的 `upstream` 数组
+- **自研 / 修复 / 官方没有** → 什么都不用加（默认即私有）
+- **拿不准** → 按私有处理。宁可不自动更新，也不要被官方静默覆盖
+
+> 反例警示：`comic_walker.js`、`shonen_jump_plus.js` 的版本号与官方**完全相同**，内容却是修复版。
+> 因为版本号相同，App 永不提示更新，一旦 url 指官方，任何更新都会把修复换掉。
+> 这就是必须有 `upstream.json` 白名单的原因。
 
 ## 校验器覆盖范围
 
