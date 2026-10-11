@@ -8,6 +8,64 @@
 | `set_url.py` | 按 upstream.json 分类设置每个源的 `url`：私有 → 本仓库，跟随官方 → 官方 | `python3 tools/set_url.py <仓库地址>` |
 | `sync_official.py` | 把「跟随官方」的源同步到官方最新版 | `python3 tools/sync_official.py` |
 | `subscribe_url.sh` | 生成带绕缓存参数的订阅地址（`?v=<commit>`） | `bash tools/subscribe_url.sh` |
+| `clean_backup.py` | 清理 `.venera` 备份里重复的源文件（清理 iOS 设备上的重复源） | `python3 tools/clean_backup.py <备份.venera>` |
+
+## 清理 iOS 设备上重复的源文件
+
+### 为什么会重复
+
+App 的「添加源」在目标文件名已存在时，会依次尝试 `名字(0).js`、`名字(1).js`……
+（`parser.dart: createAndParse`）。反复添加同一个源，就会在 `comic_source/` 里堆出多份同 key 的文件。
+
+App 启动时按文件系统顺序逐个解析，**第一个成功的占住 key，其余全部以
+「该漫画源已存在」失败**。这些失败的文件不会出现在 App 的源列表里，无法在 App 内删除。
+
+实测案例（2026-10-11 设备日志）：9 个 `komiic*.js`、2 个 `copy_manga_multi_accounts*.js`
+全部因 key 冲突加载失败，只有 `komiic(0).js` 生效。
+
+### 为什么不能直接用 Finder / 文件 App 删
+
+iOS 文件共享（`UIFileSharingEnabled`）只开放 `Documents/`，
+而源文件在 `<App容器>/Library/Application Support/comic_source/`，看不到。
+
+### 正确做法：借备份通道清理
+
+App 导入备份时（`data.dart: importAppData`）会**先把整个 `comic_source/` 目录删掉再重建**，
+只复制备份里的文件：
+
+```dart
+Directory(.../comic_source).deleteIfExistsSync(recursive: true);
+Directory(.../comic_source).createSync();
+for (file in 备份里的 comic_source) { await file.copy(target); }
+```
+
+而导出时（`data.dart: exportAppData`）是 `listSync()` **打包整个目录**，
+所以重复文件确实会进备份——正好可以借这条通道把它们筛掉。
+
+### 操作步骤
+
+1. App 内 **设置 → 备份与恢复 → 导出**，得到 `data.venera`
+2. 传到 Mac（AirDrop 或「文件」App）
+3. 先预览，确认要删哪些：
+
+   ```bash
+   python3 tools/clean_backup.py data.venera
+   ```
+
+4. 确认无误后写出清理版：
+
+   ```bash
+   python3 tools/clean_backup.py data.venera --apply
+   ```
+
+5. 把生成的 `data.cleaned.venera` 传回手机，**设置 → 备份与恢复 → 导入**
+
+保留哪一个的规则：**版本号高者优先；版本相同则不带 `(N)` 后缀者优先**。
+可用 `--keep 文件名` 强制保留、`--remove 文件名` 强制删除。
+脚本会同步更新 `manifest.json` 并做 zip 自检。
+
+> 导入会重建整个 `comic_source` 目录，所以**清理前请确认清空的文件都是你不要的**。
+> 建议先留一份原始备份。
 
 ## 订阅地址为什么要绕缓存
 
