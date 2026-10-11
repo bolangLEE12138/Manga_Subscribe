@@ -98,6 +98,12 @@
         "description": "瓜子漫画。"
     },
     {
+        "name": "嗨皮漫画",
+        "fileName": "happy.js",
+        "key": "happy",
+        "version": "1.0.0"
+    },
+    {
         "name": "H-Comic",
         "fileName": "hcomic.js",
         "key": "hcomic",
@@ -121,6 +127,12 @@
         "fileName": "hot_manga.js",
         "key": "hot_manga",
         "version": "1.0.0"
+    },
+    {
+        "name": "爱看漫",
+        "fileName": "ikmmh.js",
+        "key": "ikmmh",
+        "version": "1.0.6"
     },
     {
         "name": "爱看漫",
@@ -166,6 +178,12 @@
         "key": "laimanhua_split",
         "version": "1.2.1",
         "description": "来漫画（分流）。图片与页面域名分离，可在源设置中配置。"
+    },
+    {
+        "name": "Lanraragi",
+        "fileName": "lanraragi.js",
+        "key": "lanraragi",
+        "version": "1.2.0"
     },
     {
         "name": "51漫画",
