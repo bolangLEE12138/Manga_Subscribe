@@ -1,0 +1,212 @@
+[
+    {
+        "name": "嗶哩漫畫",
+        "fileName": "bilimanga.js",
+        "key": "bilimanga",
+        "version": "1.1.3",
+        "description": "嗶哩漫畫。需要登录方可阅读。"
+    },
+    {
+        "name": "拷贝漫画",
+        "fileName": "copy_manga.js",
+        "key": "copy_manga",
+        "version": "1.6.6",
+        "description": "拷贝漫画。需要登录后才能阅读部分内容；源会自动管理设备信息。"
+    },
+    {
+        "name": "动漫屋",
+        "fileName": "dm5.js",
+        "key": "dm5",
+        "version": "7.0.2",
+        "description": "动漫屋。"
+    },
+    {
+        "name": "动漫啦",
+        "fileName": "dongman_la.js",
+        "key": "dongman_la",
+        "version": "1.0.1",
+        "description": "动漫啦。"
+    },
+    {
+        "name": "咚漫",
+        "fileName": "dongmanmanhua.js",
+        "key": "dongmanmanhua",
+        "version": "1.0.6",
+        "description": "咚漫（LINE WEBTOON 中国区）。"
+    },
+    {
+        "name": "飞翔漫画",
+        "fileName": "ffppt.js",
+        "key": "ffppt",
+        "version": "1.0.1",
+        "description": "飞翔漫画。"
+    },
+    {
+        "name": "古风漫画",
+        "fileName": "gfmh.js",
+        "key": "GfmhApp",
+        "version": "1.3.0",
+        "description": "古风漫画。"
+    },
+    {
+        "name": "瓜子漫画",
+        "fileName": "guazi_manhua.js",
+        "key": "guazimanhua",
+        "version": "1.0.4",
+        "description": "瓜子漫画。"
+    },
+    {
+        "name": "嬉皮漫畫",
+        "fileName": "hipmh.js",
+        "key": "hipmh",
+        "version": "1.0.1",
+        "description": "嬉皮漫畫。"
+    },
+    {
+        "name": "爱看漫",
+        "fileName": "ikmmh_v2.js",
+        "key": "ikmmh_v2",
+        "version": "3.0.0",
+        "description": "爱看漫。中国大陆部分网络下首页可能返回 403，源内置多域名回退。"
+    },
+    {
+        "name": "Komiic",
+        "fileName": "komiic.js",
+        "key": "Komiic",
+        "version": "1.0.8",
+        "description": "Komiic（双域名：komiic.cc / komiic.com，自动择优）。"
+    },
+    {
+        "name": "来漫画（分流）",
+        "fileName": "laimanhua_split_hosts.js",
+        "key": "laimanhua_split",
+        "version": "1.2.1",
+        "description": "来漫画（分流）。图片与页面域名分离，可在源设置中配置。"
+    },
+    {
+        "name": "51漫画",
+        "fileName": "manga51.js",
+        "key": "manga51",
+        "version": "1.2.0",
+        "description": "51漫画。"
+    },
+    {
+        "name": "MangaDex",
+        "fileName": "manga_dex.js",
+        "key": "manga_dex",
+        "version": "1.2.0",
+        "description": "MangaDex。官方源同步版本。"
+    },
+    {
+        "name": "香蕉漫画",
+        "fileName": "manhuauo_banana.js",
+        "key": "manhuauo_banana_v2",
+        "version": "1.0.3",
+        "description": "香蕉漫画。站点有 Cloudflare 防护，遇到 403 可稍后重试或更换网络。"
+    },
+    {
+        "name": "漫蛙吧",
+        "fileName": "manwaba.js",
+        "key": "manwaba",
+        "version": "1.1.3",
+        "description": "漫蛙吧。可在源设置中切换镜像域名。"
+    },
+    {
+        "name": "漫网",
+        "fileName": "manwang.js",
+        "key": "manwang",
+        "version": "1.2.0",
+        "description": "漫网。官方搜索接口不稳定时会自动降级为站内目录检索。"
+    },
+    {
+        "name": "4399漫画网",
+        "fileName": "mh4399.js",
+        "key": "mh4399",
+        "version": "1.0.3",
+        "description": "4399漫画网。"
+    },
+    {
+        "name": "MOJOIN",
+        "fileName": "mojoin.js",
+        "key": "mojoin_v2",
+        "version": "1.0.7",
+        "description": "MOJOIN（台湾）。"
+    },
+    {
+        "name": "NoyManga",
+        "fileName": "noymanga.js",
+        "key": "noymanga",
+        "version": "1.1.3",
+        "description": "NoyManga。"
+    },
+    {
+        "name": "Rawkuma",
+        "fileName": "rawkuma.js",
+        "key": "rawkuma",
+        "version": "1.1.0",
+        "description": "Rawkuma。"
+    },
+    {
+        "name": "如漫画",
+        "fileName": "rumanhua.js",
+        "key": "rumanhua_fixed_v15",
+        "version": "1.2.7",
+        "description": "如漫画。"
+    },
+    {
+        "name": "SF漫画",
+        "fileName": "sfacg_manhua.js",
+        "key": "sfacg_manhua",
+        "version": "1.0.0",
+        "description": "SF漫画。"
+    },
+    {
+        "name": "腾讯动漫（正版）",
+        "fileName": "tencent_comic_official.js",
+        "key": "qq_comic_official_v1",
+        "version": "1.0.3",
+        "description": "腾讯动漫（正版）。仅返回站点标记为可读的章节，付费章节请使用官方客户端。"
+    },
+    {
+        "name": "图库漫画",
+        "fileName": "tuku_cc.js",
+        "key": "tuku_cc",
+        "version": "1.0.1",
+        "description": "图库漫画。"
+    },
+    {
+        "name": "LINE WEBTOON",
+        "fileName": "webtoons_zh_hant.js",
+        "key": "webtoons_zh_hant",
+        "version": "1.0.0",
+        "description": "LINE WEBTOON 繁体中文。"
+    },
+    {
+        "name": "W漫画",
+        "fileName": "wmanhua.js",
+        "key": "wmanhua",
+        "version": "1.0.1",
+        "description": "W漫画。"
+    },
+    {
+        "name": "紳士漫畫",
+        "fileName": "wnacg.js",
+        "key": "wnacg",
+        "version": "1.0.6",
+        "description": "紳士漫畫。官方源同步版本；不能使用时可在源设置中更换 URL。"
+    },
+    {
+        "name": "优酷漫画 (修复版)",
+        "fileName": "ykmh.js",
+        "key": "ykmh",
+        "version": "1.0.6",
+        "description": "优酷漫画（修复版）。站点有 Cloudflare 防护，中国大陆网络可能需要代理。"
+    },
+    {
+        "name": "zero搬运网",
+        "fileName": "zerobyw33.js",
+        "key": "zerobyw33",
+        "version": "1.2.0",
+        "description": "zero搬运网。源会自动解析当前可用域名。"
+    }
+]

@@ -1,0 +1,4 @@
+# 用户本地数据，不应提交（App 会自动生成）
+*.data
+.url-backup/
+tools/validation-report.txt
