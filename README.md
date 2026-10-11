@@ -9,6 +9,12 @@
 | **私有源** | 30 | 自研修复版，或比官方更新、官方缺少的源 | 本仓库 |
 | **跟随官方源** | 24 | 内容与官方一致，收录进来只为了让「一个订阅地址覆盖全部」 | 官方 jsdelivr |
 
+**当前订阅地址**（用 `bash tools/subscribe_url.sh` 可随时重新生成）：
+
+```
+https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/index.json
+```
+
 之所以要分两类，是因为 **App 的源清单地址只能填一个**（`appdata.settings['comicSourceListUrl']` 是单个字符串）。
 若只收录私有源，切换订阅地址后官方那 24 个源就会从可添加列表里消失。
 
@@ -49,28 +55,73 @@
 
 ### 1. 在 App 中订阅
 
-源清单地址填：
+**主地址（推荐，更新最快）：**
 
 ```
 https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/index.json
 ```
 
-若 `raw.githubusercontent.com` 在你的网络下不通，改用 jsDelivr 镜像：
+**推荐写法：在地址后加一个版本参数**
+
+```
+https://raw.githubusercontent.com/bolangLEE12138/Manga_Subscribe/main/index.json?v=54
+```
+
+`?v=54` 是绕缓存用的。App 取源文件的方式是
+`地址.substring(0, 地址.lastIndexOf("/") + 1) + fileName`，
+最后一个 `/` 在 `index.json` 之前，所以 `?v=54` 会被自然丢掉，不影响任何源文件的解析：
+
+```
+解析出的 base : .../Manga_Subscribe/main/
+拼接 jm.js    : .../Manga_Subscribe/main/jm.js    ✓
+拼接 picacg.js: .../Manga_Subscribe/main/picacg.js ✓
+```
+
+**以后每次仓库有更新，只要把这个数字改掉（`?v=55`、`?v=56`…），就能立刻拿到新版，绕过所有中间缓存。**
+
+#### 关于 jsDelivr 镜像（慎用）
 
 ```
 https://cdn.jsdelivr.net/gh/bolangLEE12138/Manga_Subscribe@main/index.json
 ```
 
-> jsDelivr 对 `@main` 有缓存（最长约 12 小时）。改了源需要立刻生效时用 raw 地址，
-> 或改用 commit hash / tag 固定版本。
+`raw.githubusercontent.com` 在部分网络下不通时可以用它，但**它对本仓库这种高频更新的自建源并不合适**：
+
+| | raw.githubusercontent.com | jsDelivr `@main` |
+|---|---|---|
+| 缓存 | 约 5 分钟 | **最长约 12 小时** |
+| 适合场景 | 日常订阅 | 固定版本分发 |
+
+> **实际踩过的坑**：仓库从 30 个源扩到 54 个之后，raw 地址已是 54 条，
+> jsDelivr 却仍在返回旧的 30 条——因为 `@main` 被它长期缓存了。
+
+若确实要用 jsDelivr 且需要立即生效，手动清除它的缓存：
+
+```bash
+curl "https://purge.jsdelivr.net/gh/bolangLEE12138/Manga_Subscribe@main/index.json"
+curl "https://purge.jsdelivr.net/gh/bolangLEE12138/Manga_Subscribe@main"
+```
+
+返回 `"status": "finished"` 表示清除成功（CF、FY 两个节点都会刷新），约 10 秒后生效。
+
+#### 改了地址却还是旧数据？
+
+App 自己也有缓存。`_ComicSourceListState.load()` 用普通 `dio.get(地址)`，
+会被 `NetworkCacheManager` 拦截，但它是**纯内存缓存**：
+
+- **完全退出 App 再打开即可清空**
+- 5 秒～2 小时内它会发 HEAD 请求重新校验 `etag`，内容变了会自动重新拉取
+
+排查顺序：**换 `?v=N` 地址 → 退出 App 重开 → 清 jsDelivr 缓存**。
 
 ### 2. 源的更新地址
 
-30 个源的顶层 `url` 已全部指向本仓库的原始文件地址，用
-`python3 tools/set_url.py --show` 可复查，`--restore` 可回滚。
+私有源（30 个）的顶层 `url` 指向本仓库，跟随官方源（24 个）指向官方 jsdelivr。
+用 `python3 tools/set_url.py --show` 可复查全部分类，`--restore` 可回滚。
 
-**为什么必须做**：`copy_manga` / `komiic` / `manwaba` / `ykmh` 原本指向官方 jsDelivr，
-而它们的版本比官方新——一旦在 App 内触发更新，会被**降级覆盖**成官方旧版。
+**为什么必须区分**：`copy_manga` / `komiic` / `manwaba` / `ykmh` / `comic_walker` / `shonen_jump_plus`
+的版本比官方新（或版本号相同但内容是修复版）——一旦 `url` 指向官方，更新会**静默降级**成官方旧版。
+`comic_walker` 的官方版本更会被服务端以 `upgrade_required` 拒绝。
 
 若以后仓库改名或迁移，只需重跑：
 
@@ -366,6 +417,22 @@ git add -A && git commit -m "chore: 同步官方源" && git push
 `tools/gen_index.py` 的设计原则：**`name` / `key` / `version` 一律从源文件内读取，绝不手写**。
 手写 index.json 极易造成清单与源文件不一致，导致 App 显示错误版本或拒绝加载。
 
+### 推送之后：拿到新的订阅地址
+
+每次推送完，用脚本生成带缓存戳的地址，再填进 App：
+
+```bash
+bash tools/subscribe_url.sh
+# https://raw.githubusercontent.com/.../main/index.json?v=<新的 commit 短哈希>
+```
+
+`?v=` 后面是 commit 短哈希，所以**每次提交都会自动变化**，天然绕开
+raw 的 5 分钟 CDN 缓存和 jsDelivr 最长 12 小时的 `@main` 缓存。
+填进 App 后若仍是旧数据，再完全退出 App 重开一次（清内存缓存）。
+
+> 注意：本仓库有 54 个源，App 的源列表页需要**往下滚动**才能看全；
+> 若只看到 30 个并确认不是缓存问题，请先核对 `curl <地址> | grep -c fileName` 的实际条数。
+
 ### 校验器做了什么
 
 `tools/validate.js` 用最小 Venera 运行时仿真复现 App 的加载流程，逐源执行五级检查：
@@ -386,6 +453,15 @@ git add -A && git commit -m "chore: 同步官方源" && git push
 
 ## 九、改动记录
 
+### 第三批：缓存问题修正
+
+| 改动 | 依据 | 影响范围 |
+|---|---|---|
+| README 把 jsDelivr 从「备用地址」降级为「慎用」 | 实测：源从 30 个扩到 54 个后，raw 已是 54 条，jsDelivr 仍返回 30 条——`@main` 被长期缓存 | 文档 |
+| 新增 `?v=<commit>` 绕缓存写法 | raw 有约 5 分钟 CDN 缓存，jsDelivr 最长 12 小时；查询参数在 App 解析 `fileName` 时被自然丢弃，安全 | 文档 |
+| 新增 `tools/subscribe_url.sh` | 自动用 commit 短哈希生成带缓存戳的订阅地址，避免手数版本号 | 工具链 |
+| 补充 jsDelivr 手动清缓存方法 | `curl "https://purge.jsdelivr.net/gh/.../index.json"`，返回 `"status":"finished"` 即成功 | 文档 |
+
 ### 第二批：补录官方源，凑齐 54 个
 
 | 改动 | 依据 | 影响范围 |
@@ -395,6 +471,7 @@ git add -A && git commit -m "chore: 同步官方源" && git push
 | 新增 `tools/sync_official.py` | App 的更新提示靠 index.json 版本号，实际下载靠源内 `url`，两者必须一起维护 | 工具链 |
 | **`comic_walker` / `shonen_jump_plus` 归入私有** | 版本号与官方相同但内容是修复版：官方 `1.4.13` 会被服务端以 `upgrade_required` 拒绝；`shonen_jump_plus` 官方为 `4.0.24`（修复版 `4.5.24`）。版本号相同 → App 永不提示更新 → 跟官方同步就是静默降级 | 2 个源 |
 | `set_url.py` 支持两行 `url =` 写法 | 官方 `jcomic` / `zaimanhua` / `comic_walker` / `shonen_jump_plus` 用值换行的写法，原正则匹配不到 | 工具链 |
+
 
 ### 第一批：建立 30 源仓库
 

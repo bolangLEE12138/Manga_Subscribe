@@ -7,6 +7,36 @@
 | `gen_index.py` | 从源文件重新生成 `index.json`，`name`/`key`/`version` 一律读取源文件 | `python3 tools/gen_index.py` |
 | `set_url.py` | 按 upstream.json 分类设置每个源的 `url`：私有 → 本仓库，跟随官方 → 官方 | `python3 tools/set_url.py <仓库地址>` |
 | `sync_official.py` | 把「跟随官方」的源同步到官方最新版 | `python3 tools/sync_official.py` |
+| `subscribe_url.sh` | 生成带绕缓存参数的订阅地址（`?v=<commit>`） | `bash tools/subscribe_url.sh` |
+
+## 订阅地址为什么要绕缓存
+
+仓库更新后，中间层可能仍在返回旧内容：
+
+| 层 | 缓存时长 |
+|---|---|
+| `raw.githubusercontent.com` | 约 5 分钟 |
+| `cdn.jsdelivr.net` 的 `@main` | **最长约 12 小时** |
+| App 的 `NetworkCacheManager` | 内存缓存，重启可清 |
+
+**实测踩过的坑**：源从 30 个扩到 54 个之后，raw 地址已是 54 条，jsDelivr 却仍返回 30 条。
+
+`tools/subscribe_url.sh` 会在地址后拼 `?v=<commit 短哈希>` 来绕过全部缓存。
+这样做是安全的——App 解析源文件用的是
+`地址.substring(0, 地址.lastIndexOf("/") + 1) + fileName`，
+最后一个 `/` 在 `index.json` 之前，查询参数会被自然丢弃：
+
+```
+https://raw.githubusercontent.com/.../main/index.json?v=0b8391e
+  -> base = https://raw.githubusercontent.com/.../main/
+  -> jm.js = https://raw.githubusercontent.com/.../main/jm.js   ✓
+```
+
+```bash
+bash tools/subscribe_url.sh              # raw（推荐）
+bash tools/subscribe_url.sh --jsdelivr   # jsDelivr
+bash tools/subscribe_url.sh --plain      # 不带缓存戳
+```
 
 ## 为什么需要区分私有源和跟随官方的源
 
