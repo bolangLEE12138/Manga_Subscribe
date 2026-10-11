@@ -33,39 +33,48 @@
 
 ## 二、部署与订阅
 
-### 1. 上传到 GitHub
+> **本仓库已配置完成**，部署地址为 `github.com/bolangLEE12138/manga-sub`。
 
-```bash
-git init
-git add .
-git commit -m "init: 30 sources"
-git branch -M main
-git remote add origin https://github.com/<你的用户名>/<仓库名>.git
-git push -u origin main
-```
-
-### 2. 把源的 `url` 字段指向你自己的仓库
-
-**这一步必须做**，否则「检查更新」会把你的私有修复版覆盖成别人的版本。
-
-```bash
-python3 tools/set_url.py https://raw.githubusercontent.com/<你的用户名>/<仓库名>/main
-git add -A && git commit -m "chore: point update urls to own repo" && git push
-```
-
-完成后可以用 `python3 tools/set_url.py --show` 复查。
-若想回滚：`python3 tools/set_url.py --restore`。
-
-### 3. 在 App 中订阅
+### 1. 在 App 中订阅
 
 源清单地址填：
 
 ```
-https://raw.githubusercontent.com/<你的用户名>/<仓库名>/main/index.json
+https://raw.githubusercontent.com/bolangLEE12138/manga-sub/main/index.json
 ```
 
-（如访问不畅，可改用 jsDelivr 镜像：
-`https://cdn.jsdelivr.net/gh/<你的用户名>/<仓库名>@main/index.json`）
+若 `raw.githubusercontent.com` 在你的网络下不通，改用 jsDelivr 镜像：
+
+```
+https://cdn.jsdelivr.net/gh/bolangLEE12138/manga-sub@main/index.json
+```
+
+> jsDelivr 对 `@main` 有缓存（最长约 12 小时）。改了源需要立刻生效时用 raw 地址，
+> 或改用 commit hash / tag 固定版本。
+
+### 2. 源的更新地址
+
+30 个源的顶层 `url` 已全部指向本仓库的原始文件地址，用
+`python3 tools/set_url.py --show` 可复查，`--restore` 可回滚。
+
+**为什么必须做**：`copy_manga` / `komiic` / `manwaba` / `ykmh` 原本指向官方 jsDelivr，
+而它们的版本比官方新——一旦在 App 内触发更新，会被**降级覆盖**成官方旧版。
+
+若以后仓库改名或迁移，只需重跑：
+
+```bash
+python3 tools/set_url.py <新的仓库地址>
+git add -A && git commit -m "chore: 更新源地址" && git push
+```
+
+### 3. 推送到 GitHub（首次）
+
+```bash
+git remote add origin git@github.com:bolangLEE12138/manga-sub.git
+git push -u origin main
+```
+
+> 仓库必须为 **Public**。私有仓库的 raw 地址需要 token，App 不支持。
 
 ---
 
